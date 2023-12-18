@@ -3,9 +3,11 @@
 > 注意：本项目仅供学习交流使用，请勿用于商业用途，否则后果自负。
 
 ## 简介
+
 本项目是北京青年大学习的速刷程序，可以迅速完成学习任务。
 
 ## 特性
+
 - 自动识别学习任务是否完成，完成后自动退出。
 - 自动识别验证码，无需人工干预。
 - 支持多用户
@@ -19,6 +21,7 @@
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 3. 配置账户信息，打开`account.csv.example`文件，按照格式填写账户信息，保存为`account.csv`。
+账户获取方法：填写[此网站](https://m.bjyouth.net/site/login)的账号密码即可。
 4. 运行程序，打开命令行，输入以下命令：
 ```
 python Beijng_Daxuexi.py

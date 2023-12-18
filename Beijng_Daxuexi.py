@@ -75,7 +75,7 @@ def study(username,password):
         return 0
 
 if __name__ == '__main__':
-    # 读取account.csv配置文件，格式为：用户名,密码
+    # 读取account.csv配置文件，格式为：用户名,密码,备注
     success = 0
     count = 0
     with open('account.csv', 'r', encoding='utf-8') as f:
@@ -85,5 +85,6 @@ if __name__ == '__main__':
             print(f'用户{count}: {row[0]}')
             if study(row[0], row[1]):
                 success += 1
+            print("\n")
     print(f'共{count}个用户，成功{success}个，失败{count-success}个')
             
