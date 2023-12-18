@@ -2,6 +2,7 @@ import json
 import re
 import time
 import requests
+import csv
 from utility import encrypt, cap_recognize
 def study(username,password):
     # 返回1:成功
@@ -62,10 +63,9 @@ def study(username,password):
     study_url = f"https://m.bjyouth.net/dxx/check"
     r = bjySession.post(study_url, json={"id": str(courseId), "org_id": int(nOrgID)})  # payload
     if r.text:
-        print(f'开始学习{title}')
+        print(f'Unexpected response: {r.text}')
         return 0
 
-    
     haveLearned = bjySession.get(learnedInfo).json()
     if f"学习课程：《{title}》" in list(map(lambda x: x['text'], haveLearned['data'])):
         print(f'{title} 成功完成学习')
@@ -75,4 +75,15 @@ def study(username,password):
         return 0
 
 if __name__ == '__main__':
-    study('16634486740','Anye20031003')
+    # 读取account.csv配置文件，格式为：用户名,密码
+    success = 0
+    count = 0
+    with open('account.csv', 'r', encoding='utf-8') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            count += 1
+            print(f'用户{count}: {row[0]}')
+            if study(row[0], row[1]):
+                success += 1
+    print(f'共{count}个用户，成功{success}个，失败{count-success}个')
+            
