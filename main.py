@@ -5,7 +5,7 @@ from study import study
 
 ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
-accounts=[('16634486740', 'Anye20031003')]
+accounts=[('*********', '*********')]
 print(f'账号数量：{len(accounts)}')
 successful = 0
 count = 0
