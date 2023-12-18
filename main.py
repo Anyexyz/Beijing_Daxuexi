@@ -3,7 +3,7 @@ import time
 import sys
 from study import study
 
-ua = os.getenv('UA','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
 accounts=[('16634486740', 'Anye20031003')]
 print(f'账号数量：{len(accounts)}')
