@@ -15,17 +15,8 @@ def encrypt(t):
     cipher_text = b64encode(cipher.encrypt(t.encode()))
     return cipher_text.decode()
 
-
-def md5(s):
-    import hashlib
-    m = hashlib.md5()
-    m.update(s.encode())
-    return m.hexdigest()
-
-
 def cap_recognize(cap):
     return DdddOcr().classification(denoise(cap))
-
 
 def denoise(cap):
     img = Image.open(BytesIO(cap))
@@ -55,22 +46,3 @@ def denoise(cap):
     buf = BytesIO()
     img.save(buf, format='PNG')
     return buf.getvalue()
-
-
-if __name__ == '__main__':
-    import requests
-    import re
-
-    bjySession = requests.session()
-    bjySession.timeout = 5  # set session timeout
-    touch = bjySession.get(url="https://m.bjyouth.net/site/login")
-    capUrl = "https://m.bjyouth.net" + re.findall(
-        r'src="(/site/captcha.+)" alt=', touch.text)[0]
-    cap1 = bjySession.get(url=capUrl).content
-    cap2 = denoise(cap1)
-
-    img = Image.open(BytesIO(cap1))
-    img.show()
-
-    img = Image.open(BytesIO(cap2))
-    img.show()
